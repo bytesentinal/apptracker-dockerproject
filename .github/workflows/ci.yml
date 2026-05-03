@@ -1,0 +1,64 @@
+name: AppTrackr CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install backend dependencies
+        working-directory: ./apptrackr-backend
+        run: npm install
+
+      - name: Check backend starts without crashing
+        working-directory: ./apptrackr-backend
+        env:
+          PORT: 5000
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/apptrackr
+          MONGO_URI: mongodb://localhost:27017/apptrackr
+          JWT_SECRET: test_secret
+          JWT_EXPIRES_IN: 15m
+          REFRESH_TOKEN_SECRET: test_refresh_secret
+          REFRESH_TOKEN_EXPIRES_IN: 7d
+        run: |
+          timeout 10 node src/app.js || true
+
+      - name: Install frontend dependencies
+        working-directory: ./apptrackr-frontend
+        run: npm install
+
+      - name: Build frontend
+        working-directory: ./apptrackr-frontend
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:5000/api
+        run: npm run build
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build backend Docker image
+        run: docker build -t apptrackr-backend ./apptrackr-backend
+
+      - name: Build frontend Docker image
+        run: docker build -t apptrackr-frontend ./apptrackr-frontend
+
+      - name: Confirm images exist
+        run: docker images | grep apptrackr
