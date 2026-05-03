@@ -16,7 +16,7 @@ A full-stack developer portfolio and project tracking app built to cover the com
 
 ## 🏗️ Architecture
 
-\```
+```
 Next.js (port 3000)
       ↕ REST API
 Express (port 5000)
@@ -24,33 +24,33 @@ Express (port 5000)
 PostgreSQL (5432)   MongoDB (27017)
 
 All services containerized via Docker Compose
-\```
+```
 
 ## 🚀 Getting Started
 
 ### Run with Docker (recommended)
 
-\```bash
+```bash
 docker compose up --build
-\```
+```
 
 App runs at `http://localhost:3000`
 
 ### Run locally
 
 **Backend:**
-\```bash
+```bash
 cd apptrackr-backend
 npm install
 npm run dev
-\```
+```
 
 **Frontend:**
-\```bash
+```bash
 cd apptrackr-frontend
 npm install
 npm run dev
-\```
+```
 
 ## ✨ Features
 
