@@ -1,10 +1,8 @@
-markdown# 
-
-AppTrackr
+# 🗂️ AppTrackr
 
 A full-stack developer portfolio and project tracking app built to cover the complete web development + DevSecOps stack.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -16,15 +14,19 @@ A full-stack developer portfolio and project tracking app built to cover the com
 | Containerization | Docker, Docker Compose |
 | CI Pipeline | GitHub Actions |
 
-## Architecture
-Next.js (port 3000)
-↕ REST API
-Express (port 5000)
-↕              ↕
-PostgreSQL (5432)   MongoDB (27017)
-All services containerized via Docker Compose
+## 🏗️ Architecture
 
-## Getting Started
+```
+Next.js (port 3000)
+      ↕ REST API
+Express (port 5000)
+      ↕              ↕
+PostgreSQL (5432)   MongoDB (27017)
+
+All services containerized via Docker Compose
+```
+
+## 🚀 Getting Started
 
 ### Run with Docker (recommended)
 
@@ -50,16 +52,16 @@ npm install
 npm run dev
 ```
 
-## Features
+## ✨ Features
 
-- User registration and login with JWT authentication
-- Access token + refresh token flow
-- Create, view, and delete projects
-- Every action logged to MongoDB (activity feed)
-- Full Docker Compose orchestration with health checks
-- GitHub Actions CI — builds and tests on every push
+- 🔐 User registration and login with JWT authentication
+- 🔄 Access token + refresh token flow
+- 📁 Create, view, and delete projects
+- 📋 Every action logged to MongoDB (activity feed)
+- 🐳 Full Docker Compose orchestration with health checks
+- ⚙️ GitHub Actions CI builds and tests on every push
 
-## CI Pipeline
+## ⚙️ CI Pipeline
 
 On every push to `main`:
 1. Installs dependencies for backend and frontend
