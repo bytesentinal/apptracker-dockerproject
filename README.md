@@ -1,6 +1,4 @@
-markdown# 
-
-AppTrackr
+AppTrackr:
 
 A full-stack developer portfolio and project tracking app built to cover the complete web development + DevSecOps stack.
 
