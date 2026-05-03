@@ -59,7 +59,7 @@ npm run dev
 - 📁 Create, view, and delete projects
 - 📋 Every action logged to MongoDB (activity feed)
 - 🐳 Full Docker Compose orchestration with health checks
-- ⚙️ GitHub Actions CI — builds and tests on every push
+- ⚙️ GitHub Actions CI builds and tests on every push
 
 ## ⚙️ CI Pipeline
 
